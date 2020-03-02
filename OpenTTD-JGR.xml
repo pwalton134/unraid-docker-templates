@@ -26,7 +26,7 @@ ATTENTION: First start and updates can take very long time due to compiling the 
 &#xD;
 Update Notice: If there is a newer version if set to 'latest' simply restart the container to update it to the latest version. If you want to update from an older build simply set the new build number or set to latest. You can also downgrade to another version.&#xD;
 &#xD;
-###This Docker is based on the work of ich777 https://github.com/ich777/docker-openttd-server and modified to install the OpenTTD-JGR patched version of the game instead https://github.com/JGRennison/OpenTTD-patches - the work of whom remains their own.  If you enjoy their work, please make any donations to the original authors and not to me.  My contributions are purely to copy, modify and enjoy!###</Description>
+This Docker is based on the work of ich777 https://github.com/ich777/docker-openttd-server and modified to install the OpenTTD-JGR patched version of the game instead https://github.com/JGRennison/OpenTTD-patches - the work of whom remains their own.  If you enjoy their work, please make any donations to the original authors and not to me.  My contributions are purely to copy, modify and enjoy!</Description>
   <Networking>
     <Mode>host</Mode>
     <Publish>
@@ -83,7 +83,7 @@ Update Notice: If there is a newer version if set to 'latest' simply restart the
   </Environment>
   <Labels/>
   <Config Name="ServerFiles" Target="/serverdata/serverfiles" Default="" Mode="rw" Description="Container Path: /serverdata/serverfiles" Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/openttd-jgr</Config>
-  <Config Name="GAME_PARAMS" Target="GAME_PARAMS" Default="" Mode="" Description="Enter your extra start up commands for the server if needed otherwise leave blank.  To auto-load the latest autosave, type 'last-game' with no further arguments.  To load a specific savegame you MUST specifie the following '-g /serverdata/serverfiles/openttd/save/<YOUR_SAVEGAME>.sav'.  You can also customize if not loading latest.  The path always begins with '/serverdata/serverfiles/'" Type="Variable" Display="always" Required="false" Mask="false">last-game</Config>
+  <Config Name="GAME_PARAMS" Target="GAME_PARAMS" Default="" Mode="" Description="Enter your extra start up commands for the server if needed otherwise leave blank.  To auto-load the latest autosave, type 'last-game' with no further arguments.  To load a specific savegame you MUST specifie the following '-g /serverdata/serverfiles/openttd/save/YOUR_SAVEGAME.sav'.  You can also customize if not loading latest.  The path always begins with '/serverdata/serverfiles/'" Type="Variable" Display="always" Required="false" Mask="false">last-game</Config>
   <Config Name="TCP - Game Port" Target="3979" Default="" Mode="tcp" Description="Container Port: 3979" Type="Port" Display="always" Required="true" Mask="false">3979</Config>
   <Config Name="UDP - Game Port" Target="3979" Default="" Mode="udp" Description="Container Port: 3979" Type="Port" Display="always" Required="true" Mask="false">3979</Config>
   <Config Name="Game Version to Install" Target="GAME_VERSION" Default="" Mode="" Description="Define the prefered game version (eg: 'jgrpp-0.33.2' without quotes) or set to 'latest' (without quotes) to pull the newest build at each restart." Type="Variable" Display="always" Required="true" Mask="false">latest</Config>
