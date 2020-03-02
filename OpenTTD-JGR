@@ -9,16 +9,10 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/pwalton134/openttd-jgr/issues</Support>
   <Project>https://www.openttd.org/</Project>
-  <Overview>This Docker will download and install the version of OpenTTD that you enter in the variable 'Game Version to Install' (if you define 'latest' it will always pull the latest build).&#xD;
-&#xD;
-CONSOLE: If you want to connect to the console open a Terminal and type in 'screen -xS OpenTTD' (without quotes). Simply close the windows to disconnect.&#xD;
-&#xD;
-ATTENTION: First start and updates can take very long time (Also note: Assigning fewer cores for compiling will result in slower startup on the first start up and updates, RECOMMENDED: leave the 'Compile Cores' blank to use all available cores).&#xD;
-&#xD;
-Update Notice: If there is a newer version if set to 'latest' simply restart the container to update it to the latest version. If you want to update from an older build simply set the new build number or set to latest. You can also downgrade to another version.</Overview>
+  <Overview>This Docker is based on the work of ich777 (https://github.com/ich777/docker-openttd-server) and has been modified to install the OpenTTD-JGR patched version of the game instead (https://github.com/JGRennison/OpenTTD-patches).  The work of the original authors remains their own and please donate to them if you appreciate their work.  My contributions are purely to copy and modify such that I can enjoy the games in an expanded manner.</Overview>
   <Category>GameServers:</Category>
   <WebUI/>
-  <TemplateURL>https://raw.githubusercontent.com/ich777/docker-templates/master/ich777/OpenTTD.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/pwalton134/unraid-docker-templates/master/OpenTTD-JGR</TemplateURL>
   <Icon>https://raw.githubusercontent.com/pwalton134/unraid-docker-templates/master/icons/openttd-128.png</Icon>
   <ExtraParams>--restart=unless-stopped</ExtraParams>
   <PostArgs/>
@@ -26,13 +20,15 @@ Update Notice: If there is a newer version if set to 'latest' simply restart the
   <DateInstalled>1583112243</DateInstalled>
   <DonateText>If you like my work please </DonateText>
   <DonateLink>https://www.paypal.me/chips777</DonateLink>
-  <Description>This Docker will download and install the version of OpenTTD that you enter in the variable 'Game Version to Install' (if you define 'latest' it will always pull the latest build).&#xD;
+  <Description>This Docker will download and install the version of OpenTTD that you enter in the variable 'Game Version to Install'.  If you define 'latest' it will always pull the latest build, or alternatively by entering 'jgrpp-#.##.#' the specified build will be pulled, assuming it is available at https://github.com/JGRennison/OpenTTD-patches/releases .&#xD;
 &#xD;
 CONSOLE: If you want to connect to the console open a Terminal and type in 'screen -xS OpenTTD' (without quotes). Simply close the windows to disconnect.&#xD;
 &#xD;
-ATTENTION: First start and updates can take very long time (Also note: Assigning fewer cores for compiling will result in slower startup on the first start up and updates, RECOMMENDED: leave the 'Compile Cores' blank to use all available cores).&#xD;
+ATTENTION: First start and updates can take very long time due to compiling the game source (Also note: Assigning fewer cores for compiling will result in slower startup on the first start up and updates, RECOMMENDED: leave the 'Compile Cores' blank to use all available cores).&#xD;
 &#xD;
-Update Notice: If there is a newer version if set to 'latest' simply restart the container to update it to the latest version. If you want to update from an older build simply set the new build number or set to latest. You can also downgrade to another version.</Description>
+Update Notice: If there is a newer version if set to 'latest' simply restart the container to update it to the latest version. If you want to update from an older build simply set the new build number or set to latest. You can also downgrade to another version.&#xD;
+&#xD;
+###This Docker is based on the work of ich777 https://github.com/ich777/docker-openttd-server and modified to install the OpenTTD-JGR patched version of the game instead https://github.com/JGRennison/OpenTTD-patches - the work of whom remains their own.  If you enjoy their work, please make any donations to the original authors and not to me.  My contributions are purely to copy, modify and enjoy!###</Description>
   <Networking>
     <Mode>host</Mode>
     <Publish>
@@ -50,7 +46,7 @@ Update Notice: If there is a newer version if set to 'latest' simply restart the
   </Networking>
   <Data>
     <Volume>
-      <HostDir>/mnt/cache/appdata/openttd-jgr-pw134</HostDir>
+      <HostDir>/mnt/cache/appdata/openttd-jgr</HostDir>
       <ContainerDir>/serverdata/serverfiles</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
@@ -88,11 +84,11 @@ Update Notice: If there is a newer version if set to 'latest' simply restart the
     </Variable>
   </Environment>
   <Labels/>
-  <Config Name="ServerFiles" Target="/serverdata/serverfiles" Default="" Mode="rw" Description="Container Path: /serverdata/serverfiles" Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/openttd-jgr-pw134</Config>
-  <Config Name="GAME_PARAMS" Target="GAME_PARAMS" Default="" Mode="" Description="Enter your extra start up commands for the server if needed otherwise leave blank. To load the last autosavegame you MUST specifie the following '-D -g /serverdata/serverfiles/openttd/save/autosave/autosave0.sav' you can also customize the path begins always with '/serverdata/serverfiles/'" Type="Variable" Display="always" Required="false" Mask="false">last-game</Config>
+  <Config Name="ServerFiles" Target="/serverdata/serverfiles" Default="" Mode="rw" Description="Container Path: /serverdata/serverfiles" Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/openttd-jgr</Config>
+  <Config Name="GAME_PARAMS" Target="GAME_PARAMS" Default="" Mode="" Description="Enter your extra start up commands for the server if needed otherwise leave blank.  To auto-load the latest autosave, type 'last-game' with no further arguments.  To load a specific savegame you MUST specifie the following '-g /serverdata/serverfiles/openttd/save/<YOUR_SAVEGAME>.sav'.  You can also customize if not loading latest.  The path always begins with '/serverdata/serverfiles/'" Type="Variable" Display="always" Required="false" Mask="false">last-game</Config>
   <Config Name="TCP - Game Port" Target="3979" Default="" Mode="tcp" Description="Container Port: 3979" Type="Port" Display="always" Required="true" Mask="false">3979</Config>
   <Config Name="UDP - Game Port" Target="3979" Default="" Mode="udp" Description="Container Port: 3979" Type="Port" Display="always" Required="true" Mask="false">3979</Config>
-  <Config Name="Game Version to Install" Target="GAME_VERSION" Default="" Mode="" Description="Define the prefered game version (eg: '1.8.0' without quotes) or set to 'latest' (without quotes) to pull the newest build." Type="Variable" Display="always" Required="true" Mask="false">latest</Config>
+  <Config Name="Game Version to Install" Target="GAME_VERSION" Default="" Mode="" Description="Define the prefered game version (eg: 'jgrpp-0.33.2' without quotes) or set to 'latest' (without quotes) to pull the newest build at each restart." Type="Variable" Display="always" Required="true" Mask="false">latest</Config>
   <Config Name="OpenGFX Pack Url" Target="GFXPACK_URL" Default="" Mode="" Description="Enter here the OpenGFX url or leave it blank to install it manually (install it in /games/baseset).&#13;&#10;ATTENTION if you change the URL please enter the zip version of the OpenGFX pack!" Type="Variable" Display="always" Required="true" Mask="false">http://bundles.openttdcoop.org/opengfx/releases/0.5.5/opengfx-0.5.5.zip</Config>
   <Config Name="Compile Cores" Target="COMPILE_CORES" Default="" Mode="" Description="Leave blank if you want to use all cores otherwise define how many cores you want to assign for compiling (Please Note: Compiling is only needed for the first startup or if you change the Game Version to Install; ATTENTION: Assigning fewer cores results in slower compile speed)." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="UID" Target="UID" Default="" Mode="" Description="Container Variable: UID" Type="Variable" Display="advanced-hide" Required="true" Mask="false">99</Config>
