@@ -18,7 +18,7 @@
   <PostArgs/>
   <CPUset/>
   <DateInstalled>1583112243</DateInstalled>
-  <Description>This Docker will download and install the version of OpenTTD that you enter in the variable 'Game Version to Install'.  If you define 'latest' it will always pull the latest build, or alternatively by entering 'jgrpp-#.##.#' the specified build will be pulled, assuming it is available at https://github.com/JGRennison/OpenTTD-patches/releases .&#xD;
+  <Description>This Docker will download and install the version of OpenTTD that you enter in the variable 'Game Version to Install'.  If you define 'latest' it will always pull the latest build, or alternatively by entering 'jgrpp-#.##.#' the specified build will be pulled, assuming it is available at https://github.com/JGRennison/OpenTTD-patches/releases. &#xD;
 &#xD;
 CONSOLE: If you want to connect to the console open a Terminal and type in 'screen -xS OpenTTD' (without quotes). Simply close the windows to disconnect.&#xD;
 &#xD;
