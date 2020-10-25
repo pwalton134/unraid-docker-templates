@@ -51,6 +51,11 @@ This Docker is based on the work of ich777 https://github.com/ich777/docker-open
   </Data>
   <Environment>
     <Variable>
+      <Value></Value>
+      <Name>SERVER_IP</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
       <Value>last-game</Value>
       <Name>GAME_PARAMS</Name>
       <Mode/>
