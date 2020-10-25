@@ -88,6 +88,7 @@ This Docker is based on the work of ich777 https://github.com/ich777/docker-open
   </Environment>
   <Labels/>
   <Config Name="ServerFiles" Target="/serverdata/serverfiles" Default="" Mode="rw" Description="Container Path: /serverdata/serverfiles" Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/openttd-jgr</Config>
+  <Config Name="SERVER_IP" Target="SERVER_IP" Default="" Mode="" Description="Custom server IP if required.  Using 0.0.0.0 may help if you are getting port and server bind errors." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="GAME_PARAMS" Target="GAME_PARAMS" Default="" Mode="" Description="Enter your extra start up commands for the server if needed otherwise leave blank.  To auto-load the latest autosave, type 'last-game' with no further arguments.  To load a specific savegame you MUST specifie the following '-g /serverdata/serverfiles/openttd/save/YOUR_SAVEGAME.sav'.  You can also customize if not loading latest.  The path always begins with '/serverdata/serverfiles/'" Type="Variable" Display="always" Required="false" Mask="false">last-game</Config>
   <Config Name="TCP - Game Port" Target="3979" Default="" Mode="tcp" Description="Container Port: 3979" Type="Port" Display="always" Required="true" Mask="false">3979</Config>
   <Config Name="UDP - Game Port" Target="3979" Default="" Mode="udp" Description="Container Port: 3979" Type="Port" Display="always" Required="true" Mask="false">3979</Config>
